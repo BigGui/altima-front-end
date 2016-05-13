@@ -1,0 +1,60 @@
+//
+// TRANSITION
+//
+
+// Transition sur la largeur
+.transition-width(@time: @main-transition-time;) {
+	.transition(width; @time);
+}
+
+// Transition sur l'opacité
+.transition-opacity(@time: @main-transition-time;) {
+	.transition(opacity; @time);
+}
+
+// Transition sur la bordure
+.transition-border(@time: @main-transition-time;) {
+	.transition(border; @time);
+}
+
+// Transition sur la couleur de fond
+.transition-bg(@time: @main-transition-time;) {
+	.transition(background-color; @time);
+}
+
+// Transition sur la toutes les propriétés
+.transition-all(@time: @main-transition-time;) {
+	.transition(all; @time);
+}
+
+// Annule toute transition
+.transition-none() {
+	transition: none;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+}
+
+.transition(@prop; @time: @main-transition-time; @effect: ease-out) {
+	transition: @prop @time @effect;
+	-webkit-transition: @prop @time @effect;
+	-moz-transition: @prop @time @effect;
+	-ms-transition: @prop @time @effect;
+}
+
+.transition-multi(@transition) {
+	transition: @transition;
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+}
+
+.transition-delay(@time: 0ms) {
+	transition-delay: @time;
+	-webkit-transition-delay: @time;
+	-moz-transition-delay: @time;
+	-ms-transition-delay: @time;
+}
+
+
+ 

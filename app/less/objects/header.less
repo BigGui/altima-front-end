@@ -1,0 +1,153 @@
+//
+// HEADER
+//
+
+@gutter-sm:		20px;
+@gutter-xs:		@gutter-sm / 2;
+
+.container {
+	padding: 0 @gutter-xs;
+}
+
+@media (max-width: @screen-sm-max) {
+	.container {
+		width: 100%;
+	}
+}
+
+@media (min-width: @screen-sm-min) {
+	.container {
+		padding: 0 @gutter-sm;
+	}
+}
+
+.main-ttl {
+	margin: 19px 0 26px;
+	font-weight: 300;
+	text-align: center;
+	color: #d6d6d6;
+}
+
+@header-color: 			#c3003f;
+@header-color-scd: 		#a00134;
+@header-height:			111px;
+@header-border-width:	10px;
+@nav-link-width:		110px;
+
+header {
+	border-bottom: @header-border-width solid @header-color;
+	
+	@media (max-width: @screen-xs-max) {
+		padding: 10px 0;
+	}
+	@media (min-width: @screen-sm-min) {
+		height: @header-height;
+		margin-bottom: @header-border-width;
+		.logo {
+			padding-left: 11px;
+			line-height: @header-height - @header-border-width;
+			vertical-align: middle;
+		}
+		.container {
+			padding-right: 0;
+		}
+	}
+}
+
+
+.logo {
+	.make-sm-column(4);
+	@media (max-width: @screen-xs-max) {
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.header-content {
+	.make-sm-column(14);
+	position: relative;
+	nav {
+
+		@media (min-width: @screen-sm-min) {
+			.pull-right;
+			margin-top: @header-height - @navbar-height - @header-border-width;
+		}
+
+		.navbar-nav {
+			a {
+				font-size: @font-size-large;
+				font-weight: 700;
+				color: @header-color;
+				text-transform: uppercase;
+			}
+			
+			@media (min-width: @screen-sm-min) {
+				li {
+					padding: 0 10px;
+					a {
+						position: relative;
+						min-width: @nav-link-width;
+						border-bottom: @header-border-width solid @header-color;
+						text-align: center;
+						padding-left: 0;
+						padding-right: 0;
+						
+						.make-cursor(@nav-link-width/2; @header-border-width; @header-color-scd);
+						&:after {
+							position: absolute;
+							z-index: 1;
+							bottom: @header-border-width * -1;
+							left: 0;
+							.opacity(0);
+							.transition-multi(	opacity @main-transition-time @main-transition-effect ~","
+												bottom @main-transition-time @main-transition-effect
+							);
+						}
+						
+						.transition-multi(border-color @main-transition-time @main-transition-effect);
+					}
+					&.active a,
+					a:hover {
+						border-color: @header-color-scd;
+						&:after {
+							.opacity(1);
+							bottom: @header-border-width * -2;
+						}
+					}
+					
+					&.qsn a {
+						min-width: 180px;
+						.make-cursor(180px/2; @header-border-width; @header-color-scd);
+					}
+					&.contact a {
+						min-width: 100px;
+						.make-cursor(100px/2; @header-border-width; @header-color-scd);
+					}
+				}
+			}
+			
+			@media (min-width: @screen-md-min) {
+			
+				li {
+					padding: 0 13px;
+					&:last-child { padding-right: 0 }
+					&.qsn {
+						padding-left: 46px;
+					}
+				}
+			}
+			
+			@media (max-width: @screen-xs-max) {
+			
+				li {
+					a {
+						padding-left: 0;
+						padding-right: 0;
+					}
+				}
+			}
+		}
+
+	}
+}

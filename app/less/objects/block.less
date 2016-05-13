@@ -1,0 +1,40 @@
+//
+// Block
+//
+
+@block-bg:			#e3e3e3;
+@block-boder-color: #c1c1c1;
+@block-shadow: 		#b8b8b8;
+@block-text: 		#b8b8b8;
+
+.block {
+	border-bottom: 1px solid #fff;
+	margin-bottom: 19px;
+	
+	&, .block-content {
+		border-radius: @border-radius-large;
+	}
+	.block-content {
+		min-height: 108px;
+		background: @block-bg;
+		padding: 18px 19px 0 19px;
+		border: 1px solid #c1c1c1;
+		
+		-moz-box-shadow: inset 0px 1px 2px 0px @block-shadow;
+		-webkit-box-shadow: inset 0px 1px 2px 0px @block-shadow;
+		box-shadow: inset 0px 1px 2px 0px @block-shadow;
+		filter:progid:DXImageTransform.Microsoft.Shadow(color=@block-shadow, Direction=180, Strength=1);
+		
+		p { 
+			font-size: @font-size-small;
+			margin-bottom: 9px;
+		}
+	}
+}
+
+.block-ttl {
+	margin: 0 0 2px 0;
+	font-size: 13px;
+	color: @main-ttl-color;
+	text-transform: uppercase;
+}

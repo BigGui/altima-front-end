@@ -1,0 +1,48 @@
+//
+// MEDIA
+//
+
+.media-heading {
+	margin-bottom: 0;	
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+	&, a {
+		color: @main-ttl2-color;
+	}
+}
+.media-left,
+.media-body {
+	@media (max-width: @screen-xs-min) {
+		display: block;
+		width: auto;
+	}
+}
+@media (max-width: @screen-xs-min) {
+	.media-left {
+		text-align: center;
+		img { display: inline }
+	}
+}
+.media-body {
+	padding-top: 2px;
+	time {
+		margin-left: 12px;
+		font-size: @font-size-small;
+	}
+	p {
+		margin: 15px 0 13px;
+		line-height: 16px;
+	}
+	a.more {
+		&:extend(.pull-right);
+		text-decoration: none;
+		font-size: @font-size-small;
+		line-height: 10px;
+		color: @main-ttl2-color;
+		border-bottom: 2px solid #e5c7cd;
+		&:hover {
+			border-color: transparent;
+		}
+	}
+}

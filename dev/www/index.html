@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test d'intégration</title>
+	<meta name="language" content="fr">
+	<link href="/css/main.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body data-ng-app="altima">
+	
+	<header>
+		<div class="container">
+			<a class="logo" href="#/">
+				<img src="/images/logo.png" alt="altima">
+			</a>
+			<div class="header-content">
+				<nav>
+					<ul class="nav navbar-nav">
+						<li data-ng-class="{'active': page == 'home'}"><a href="#/">Accueil</a></li>
+						<li data-ng-class="{'active': page == 'article'}"><a href="#">Actualités</a></li>
+						<li class="qsn"><a href="#">Qui sommes-nous ?</a></li>
+						<li class="contact"><a href="#">Contact</a></li>
+					</ul>
+				</nav>
+				<form class="form-login" name="login" method="post">
+					<div class="form-group">
+						<input type="text" name="login" placeholder="Votre login" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="password" name="pwd" placeholder="Votre mot de passe" class="form-control">
+					</div>
+					<span class="form-btn">
+						<button class="btn btn-form">OK</button>
+					</span>
+				</form>
+			</div>
+		</div>
+		
+	</header>
+	
+	<div class="container">
+		<h1 class="main-ttl">Test d'intégration</h1>
+	</div>
+
+	<div data-ng-view></div>
+	
+	<footer>
+		&copy; altima° 2013 | <a href="#">mentions légales</a> | <a href="#">contact</a>
+	</footer>
+	
+	<script type="text/ng-template" id="home.html">
+		<div class="home">
+			<div class="home-content">
+				<div class="home-l">
+
+					<section class="block">
+						<div class="block-content">
+							<h2 class="block-ttl">La newsletter</h2>
+							<p>L'actu et les bonnes affaires à ne pas manquer</p>
+							<form class="form-newsletter" name="newsletter" method="post">
+								<div class="form-group">
+									<input type="email" name="email" placeholder="Votre adresse email" class="form-control">
+								</div>
+								<span class="form-btn">
+									<button class="btn btn-form">OK</button>
+								</span>
+							</form>
+						</div>
+					</section>
+					
+					<section class="media-list" data-ng-controller="altimaArticles">
+						<article class="media" data-ng-repeat="a in articles">
+							<div class="media-left">
+								<a href="#/{{ $index }}">
+									<img class="media-object" data-ng-src="{{ a.thumbnail }}" width="160" height="142" alt="{{ a.title }}">
+								</a>
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading"><a href="#/{{ $index }}">{{ a.title }}</a></h3>
+								<time datetime="{{ a.date }}">{{ a.date | date : 'dd/MM/yyyy' }}</time>
+								<p>{{ a.intro }}</p>
+								<a class="more" href="#/{{ $index }}">En savoir plus >></a>
+							</div>
+						</article>
+					</section>
+				</div>
+				<div class="home-r">
+					
+					<section class="block">
+						<div class="block-content">
+							<h2 class="block-ttl">Contactez-nous par téléphone ou par mail</h2>
+							<p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
+							<a class="phone-mea" href="tel:0328330830">03 28 330 830</a>
+							<form class="form-contact" name="contact" method="post" data-ng-controller="altimaContact">
+								<div data-ng-show="sent" class="alert alert-success" role="alert">Votre demande de contact nous a bien été transmise. Nous vous contacterons très rapidement.</div>
+								<div data-ng-show="error" class="alert alert-danger" role="alert">Veuillez vérifier les données saisie.</div>
+								<div data-ng-show="!sent">
+									<div class="form-group" data-ng-class="{'has-error' : (contact.lastname.$touched || error) && contact.lastname.$invalid}">
+										<label for="lastname" class="control-label">Nom * :</label>
+										<div class="form-input">
+											<input type="text" class="form-control" id="lastname" name="lastname" data-ng-model="lastname" required>
+											<span class="help-block" data-ng-show="(contact.lastname.$touched || error) && contact.lastname.$invalid">Veuillez saisir votre nom.</span>
+										</div>
+									</div>
+									<div class="form-group" data-ng-class="{'has-error' : (contact.firstname.$touched || error) && contact.firstname.$invalid}">
+										<label for="firstname" class="control-label">Prénom * :</label>
+										<div class="form-input">
+											<input type="text" class="form-control" id="firstname" name="firstname" data-ng-model="firstname" required>
+											<span class="help-block" data-ng-show="(contact.firstname.$touched || error) && contact.firstname.$invalid">Veuillez saisir votre prénom.</span>
+										</div>
+									</div>
+									<div class="form-group" data-ng-class="{'has-error' : (contact.email.$touched || error) && contact.email.$invalid}">
+										<label for="email" class="control-label">Adresse e-mail * :</label>
+										<div class="form-input">
+											<input type="email" class="form-control" id="email" name="email" data-ng-model="email" required>
+											<span class="help-block" data-ng-show="(contact.email.$touched || error) && contact.email.$invalid">Veuillez saisir une adresse e-mail valide.</span>
+										</div>
+									</div>
+									<div class="form-group" data-ng-class="{'has-error' : (contact.subject.$touched || error) && contact.subject.$invalid}">
+										<label for="subject" class="control-label">Objet du message * :</label>
+										<div class="form-input">
+											<select class="form-control" id="subject" name="subject" data-ng-model="subject" ng-options="x for x in subjects" required></select>
+											<span class="help-block" data-ng-show="(contact.subject.$touched || error) && contact.subject.$invalid">Merci de selectionner l'objet de votre demande.</span>
+										</div>
+									</div>
+									<div class="form-group" data-ng-class="{'has-error' : (contact.message.$touched || error) && contact.message.$invalid}">
+										<label for="message" class="control-label">Message * :</label>
+										<div class="form-input">
+											<textarea class="form-control" id="message" name="message" data-ng-model="message" required></textarea>
+											<span class="help-block" data-ng-show="(contact.message.$touched || error) && contact.message.$invalid">Veuillez inscire un message à envoyer.</span>
+											<div class="form-caption">* Champs obligatoires</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="form-footer">
+											<button class="btn btn-form" data-ng-click="submit(contact)">Envoyer</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+					
+				</div>
+				
+			</div>
+			
+			<section class="carousel-thumbs">
+				<h2>Découvrez les dernières nouveautés</h2>
+				<div class="thumbnails-list" data-ng-controller="altimaCarousel">
+					<div class="thumbnails-control-wrapper left">
+						<button class="thumbnails-control" data-ng-click="prev()" data-ng-class="{'disable': pos <= 0}"><span>&lsaquo;</span></button>
+					</div>
+					<div class="thumbnail" data-ng-repeat="i in imagesList | startFrom:pos | limitTo:nbMD" data-ng-class="{'hidden-xs': $index > 1}">
+						<img data-ng-src="{{ i.url }}" alt="{{ i.title }}" title="{{ i.title }}">
+					</div>
+					<div class="thumbnails-control-wrapper right">
+						<button class="thumbnails-control" data-ng-click="next()" data-ng-class="{'disable': pos >= maxPos()}"><span>&rsaquo;</span></button>
+					</div>
+				</div>
+			</section>
+
+		</div>
+ 
+    </script>
+ 
+    <script type="text/ng-template" id="article.html">
+ 
+		<article class="article" data-ng-contoller="altimaArticle">
+			<div data-ng-show="error()" class="alert alert-danger">Article introuvable</div>
+			<img class="article-img" data-ng-src="{{ articles[index].picture }}" width="160" height="142" alt="{{ articles[index].title }}">
+			<h2 class="article-ttl">{{ articles[index].title }}</h2>
+			<time datetime="{{ articles[index].date }}">{{ articles[index].date | date : 'dd/MM/yyyy' }}</time>
+			<p data-ng-repeat="p in parargaphs()">{{ p }}</p>
+		</article>
+
+    </script>
+ 
+    <script type="text/ng-template" id="404.html">
+ 
+		<section class="container">
+			<div class="alert alert-danger">Page introuvable</div>
+		</section>
+
+    </script>
+
+</body>

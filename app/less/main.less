@@ -1,0 +1,84 @@
+@dir_bootstrap: "../../node_modules/bootstrap-less/bootstrap/";
+
+@import "variables.less";				// Variables personnalisées
+
+// FONTS
+@import "fonts/helvetica-neue.less"; 
+
+// BOOTSTRAP - START 
+
+// Core variables and mixins
+@import "variables-bootstrap.less";		// Configuration Bootstrap personnalisée
+
+// Mixins Bootstrap
+@import "@{dir_bootstrap}mixins.less";
+
+// Reset and dependencies
+@import "@{dir_bootstrap}normalize.less";
+// @import "@{dir_bootstrap}print.less";
+// @import "@{dir_bootstrap}glyphicons.less";
+
+// Core CSS
+@import "@{dir_bootstrap}scaffolding.less";
+@import "@{dir_bootstrap}type.less";
+@import "@{dir_bootstrap}code.less";
+@import "@{dir_bootstrap}grid.less";
+@import "@{dir_bootstrap}tables.less";
+@import "@{dir_bootstrap}forms.less";
+@import "@{dir_bootstrap}buttons.less";
+
+// Components
+@import "@{dir_bootstrap}component-animations.less";
+// @import "@{dir_bootstrap}dropdowns.less";
+// @import "@{dir_bootstrap}button-groups.less";
+@import "@{dir_bootstrap}input-groups.less";
+@import "@{dir_bootstrap}navs.less";
+@import "@{dir_bootstrap}navbar.less";
+// @import "@{dir_bootstrap}breadcrumbs.less";
+// @import "@{dir_bootstrap}pagination.less";
+// @import "@{dir_bootstrap}pager.less";
+@import "@{dir_bootstrap}labels.less";
+// @import "@{dir_bootstrap}badges.less";
+// @import "@{dir_bootstrap}jumbotron.less";
+@import "@{dir_bootstrap}thumbnails.less";
+@import "@{dir_bootstrap}alerts.less";
+// @import "@{dir_bootstrap}progress-bars.less";
+@import "@{dir_bootstrap}media.less";
+@import "@{dir_bootstrap}list-group.less";
+@import "@{dir_bootstrap}panels.less";
+@import "@{dir_bootstrap}responsive-embed.less";
+// @import "@{dir_bootstrap}wells.less";
+@import "@{dir_bootstrap}close.less";
+
+// Components w/ JavaScript
+// @import "@{dir_bootstrap}modals.less";
+// @import "@{dir_bootstrap}tooltip.less";
+// @import "@{dir_bootstrap}popovers.less";
+// @import "@{dir_bootstrap}carousel.less";
+
+// Utility classes
+@import "@{dir_bootstrap}utilities.less";
+@import "@{dir_bootstrap}responsive-utilities.less";
+
+// BOOTSTRAP - END
+
+
+
+
+// Mixins perso
+@import "mixins.less";
+
+// Objets génériques perso
+@import "objects/form.less"; 
+@import "objects/buttons.less"; 
+@import "objects/block.less"; 
+@import "objects/header.less"; 
+@import "objects/footer.less"; 
+@import "objects/home.less"; 
+@import "objects/media.less";  
+@import "objects/thumbnails-list.less";  
+@import "objects/article.less";  
+
+
+
+

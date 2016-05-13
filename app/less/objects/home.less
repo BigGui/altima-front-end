@@ -1,0 +1,44 @@
+//
+// HOME
+//
+
+@home-gutter: 			50px;
+@phone-border-color:	#d6d6d6;
+
+.home-content {
+	&:extend(.container);
+	margin-bottom: 110px;
+}
+
+.home-l {
+	.make-sm-column(8);
+	@media (max-width: @screen-xs-max) {
+		margin-bottom: 24px;
+	}
+}
+.home-r {
+	.make-sm-column(10);
+}
+
+@media (min-width: @screen-sm-min) {
+	.home-l { padding-right: @home-gutter / 2 + 2px; }
+	.home-r { padding-left: @home-gutter / 2 - 2px; }
+}
+
+.phone-mea {
+	display: block;
+	height: 30px;
+	line-height: 26px;
+	vertical-align: middle; 
+	border: 2px solid @phone-border-color;
+	border-width: 2px 0;
+	margin-bottom: 18px;
+	font-size: @font-size-large;
+	color: @main-ttl2-color;
+	text-align: center;
+	font-weight: 700;
+	&:hover {
+		color: @main-ttl2-color;
+		text-decoration: none;
+	}
+}

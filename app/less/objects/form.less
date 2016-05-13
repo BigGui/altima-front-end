@@ -1,0 +1,103 @@
+//
+// FORM
+//
+
+// Tous les champs de formulaire sont petits pour bootstrap
+.form-control {
+	&:extend(.input-sm);
+	.make-placeholder(#5b5b5b);
+}
+
+.form-inline {  
+	@media (min-width: @screen-sm-min) {
+		.form-control,
+		.btn-form {    
+			margin-left: 3px;
+		}
+		.form-control {
+			margin-right: 4px;
+		}
+	}
+}
+
+.control-label {
+	padding-right: 10px;	
+	color: @main-ttl-color;
+	font-weight: normal;	
+}
+
+.form-contact {
+	.form-horizontal;
+	
+	.control-label {
+		.make-sm-column(7);
+		padding-right: 10px;
+	}
+	.form-input { .make-sm-column(9); }
+
+	.form-footer {
+		.make-sm-column(16);
+		text-align: right;
+	}
+	textarea.form-control { height: 100px }
+}
+
+.form-newsletter {
+	.form-inline;
+	margin-bottom: 12px;
+	.form-control {
+		width: 200px;
+		margin-left: 0;
+		margin-right: 14px;
+	}
+	@media (max-width: @screen-xs-max) {
+		.row;
+		.form-group {
+			.make-xs-column(16);
+			padding-right: 5px;
+			> .form-control { width: 100% }
+		}
+		.form-btn {
+			.make-xs-column(2);
+			text-align: right;
+			> .btn { width: 100% }
+		}
+	}
+}
+
+	
+.form-login {
+	.form-inline;
+	@media (max-width: @screen-xs-max) {
+		.row;
+		.form-group {
+			.make-xs-column(8);
+			padding-right: 5px;
+			> .form-control { width: 100% }
+		}
+		.form-btn {
+			.make-xs-column(2);
+			text-align: right;
+			> .btn { width: 100% }
+		}
+	}
+	@media (min-width: @screen-sm-min) {
+		position: absolute;
+		top: 26px; right: 27px;
+		.form-control { width: 140px }
+	}
+	
+}	
+
+
+
+.form-caption {
+	&:extend(.pull-right);
+	margin-top: 2px;
+	font-size: @font-size-small;
+}
+
+.form-group .help-block {
+	margin: 0;
+	font-size: @font-size-small;
+}

@@ -1,0 +1,30 @@
+//
+// ARTICLE
+//
+
+.article {
+	&:extend(.container);
+	margin-top: 10px;
+	margin-bottom: 20px;
+	.article-ttl {
+		margin: 0 0 9px 0;
+		font-size: 36px;
+		line-height: 30px;
+		color: @main-ttl2-color;
+		text-transform: uppercase;
+	}
+	.article-img {
+		&:extend(.pull-left);
+		.size(160px; 142px);
+		margin: 0 12px 12px 0;
+	}
+	time {
+		font-size: 18px;
+		line-height: 33px;
+	}
+	p {
+		margin: 0;
+		font-size: 14px;
+		line-height: 30px;
+	}
+}

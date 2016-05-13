@@ -1,0 +1,16 @@
+//
+// BUTTONS
+//
+
+@btn-form-color:		#1f1f1f;
+@btn-form-bg:			#fefefe; 
+@btn-form-border:		#c6c6c6;
+
+@btn-form-start-color:	#fff;
+@btn-form-end-color:	#d0cfcf;
+
+.btn-form {
+  .button-variant(@btn-form-color; @btn-form-bg; @btn-form-border);
+  .button-size(@padding-small-vertical; 5px; @font-size-base; floor(@line-height-small * @font-size-small); @border-radius-base);
+  #gradient.vertical(@btn-form-start-color; @btn-form-end-color);
+}

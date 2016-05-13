@@ -1,0 +1,59 @@
+//
+// BORDER RADIUS
+//
+
+// Border radius complet par defaut
+.border-radius(@width: @main-border-radius;) {
+	-webkit-border-radius: @width;
+	   -moz-border-radius: @width;
+	        border-radius: @width;
+}
+
+// Border radius en haut seulement
+.border-radius-top(@width: @main-border-radius;) {
+	-webkit-border-top-left-radius: @width;
+	   -moz-border-top-left-radius: @width;
+	        border-top-left-radius: @width;
+	
+	-webkit-border-top-right-radius: @width;
+	   -moz-border-top-right-radius: @width;
+	        border-top-right-radius: @width;
+}
+
+
+
+// Border radius en bas seulement
+.border-radius-bottom(@width: @main-border-radius;) {
+	-webkit-border-bottom-left-radius: @width;
+	   -moz-border-bottom-left-radius: @width;
+	        border-bottom-left-radius: @width;
+	
+	-webkit-border-bottom-right-radius: @width;
+	   -moz-border-bottom-right-radius: @width;
+	        border-bottom-right-radius: @width;
+}
+
+
+// Border radius à gauche seulement
+.border-radius-left(@width: @main-border-radius;) {
+	-webkit-border-top-left-radius: @width;
+	   -moz-border-top-left-radius: @width;
+	        border-top-left-radius: @width;
+	
+	-webkit-border-bottom-left-radius: @width;
+	   -moz-border-bottom-left-radius: @width;
+	        border-bottom-left-radius: @width;
+}
+
+// Border radius à droite seulement
+.border-radius-right(@width: @main-border-radius;) {
+	-webkit-border-top-right-radius: @width;
+	   -moz-border-top-right-radius: @width;
+	        border-top-right-radius: @width;
+	
+	-webkit-border-bottom-right-radius: @width;
+	   -moz-border-bottom-right-radius: @width;
+	        border-bottom-right-radius: @width;
+}
+
+

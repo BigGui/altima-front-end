@@ -1,0 +1,108 @@
+//
+//	MIXINS CORE
+//
+
+// Kill les float
+.clearfix() {
+	&:after {
+		content: " ";
+		clear: both;
+		display: block;
+		height: 0;
+		visibility: hidden;
+	}
+}
+
+// Dimensions
+.size(@width; @height) {
+	width: @width;
+	height: @height;
+}
+
+// Dimensions minimale
+.min-size(@width; @height) {
+	min-width: @width;
+	min-height: @height;
+}
+
+// Dimensions maximale
+.max-size(@width; @height) {
+	max-width: @width;
+	max-height: @height;
+}
+
+// Position
+.position(@top; @left) {
+	top: @top;
+	left: @left;
+}
+
+// Opacité
+.opacity(@val: 1) {
+	@val2: @val * 100;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity="@val2~")"; filter: alpha(opacity=@val2); opacity:@val;
+}
+
+// Place holder
+.make-placeholder(@color) {
+	&::-webkit-input-placeholder { color: @color; }
+	&:-moz-placeholder { color: @color; opacity:1; }
+	&::-moz-placeholder { color: @color; opacity:1; }
+	&:-ms-input-placeholder { color: @color; }
+}
+
+// Lien par defaut
+.link() {
+	text-decoration: none;
+	&, &:link, &:visited { color: @link-color }
+	&:hover { text-decoration: underline }
+}
+
+// Permet d'appliquer la couleur de fond d'une variable si l'élément a la classe du même nom.
+.make-background-variable(@var; @hover-lighten: 10%) {
+	&.@{var} {
+		background: @@var;
+		&:hover { background: lighten(@@var, @hover-lighten) }
+	}
+}
+
+// Détermine la couleur et l'opcité du placeholder d'un champ
+.make-placeholder(@color; @opacity: 1) {
+	&::-webkit-input-placeholder,
+	&:-moz-placeholder
+	&::-moz-placeholder
+	&:-ms-input-placeholder {
+		color: @color;
+		.opacity(@opacity);
+	}
+}
+
+// Permet de créer les padding haut et bas afin de centrer un texte
+.make-padding-middle(@height; @font-size: @font-size-base; @line-height: @line-height-base) {
+	line-height: ceil(@line-height * @font-size);
+	@p: (@height - ceil(@line-height * @font-size))/2;
+	padding-top:	floor(@p);
+	padding-bottom:	ceil(@p);
+}
+
+// Déclare une animation
+.animation(@properties) {
+	animation: @properties;
+	-webkit-animation: @properties;
+	-moz-animation: @properties;
+	-o-animation: @properties;
+}
+
+// Détermine la largeur en pourcentage en fonction de la largeur de l'écran progressivement
+.make-container-responsive-loop(@min-screen; @max-screen; @min-percent; @w: @screen-lg-min) when (@w =< @max-screen) {
+	.make-container-responsive(@w; @min-screen; @max-screen; @min-percent);
+	.make-container-responsive-loop(@min-screen; @max-screen; @min-percent; (@w + 50px)); // loop
+}
+.make-container-responsive(@w; @min-screen; @max-screen; @min-percent) {
+	@delta-screen: @max-screen - @min-screen;
+	@delta-percent: 100% - @min-percent;
+	
+	@p: (@w - @min-screen) * @delta-percent / @delta-screen;
+	
+	@media (min-width: (@w)) { width: 100% - @p; }
+}
